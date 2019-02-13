@@ -1,37 +1,51 @@
-class Animal
-  def initialize(weight = 0, age = 0)
-    @weight = weight
-    @age = age
+module Animals
+  class Animal
+    def initialize(weight = 0, age = 0)
+      @weight = weight
+      @age = age
+    end
+
+    def say
+    end
   end
 
-  def say
-  end
-end
+  class Dog < Animal
+    def say
+      'Wooof!'
+    end
 
-class Dog < Animal
-  def say
-    'Wooof!'
+    def bark
+      say
+      bite
+    end
+
+    private
+    def bite
+      puts '*bites*'
+    end
   end
 
-  def bark
-    self.say
-    bite
+  module HighSelfEsteemCreature
+    def has_high_self_esteem?
+      true
+    end
+
+    def self.some_static_method
+      puts 'static module method'
+    end
   end
 
-  private
-  def bite
-    puts '*bites*'
+  class Corgy < Dog
+    include ::Animals::HighSelfEsteemCreature
+    def say
+      super + ' - Wooooof!'
+    end
   end
-end
 
-class Corgy < Dog
-  def say
-    super + ' - Wooooof!'
-  end
-end
-
-class Cat < Animal
-  def say
-    'Meow!!'
+  class Cat < Animal
+    include ::Animals::HighSelfEsteemCreature
+    def say
+      'Meow!!'
+    end
   end
 end
