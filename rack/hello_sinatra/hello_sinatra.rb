@@ -9,7 +9,7 @@ post '/hello' do
 end
 
 put '/hello' do
-  
+  erb :goodbye
 end
 
 delete '/hello' do
