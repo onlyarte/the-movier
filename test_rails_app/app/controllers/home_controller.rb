@@ -6,4 +6,9 @@ class HomeController < ApplicationController
   def hello
     render text: "<h2>Hello, world!</h2>"
   end
+
+  def students
+    @students = ::Student.all
+    render json: @students
+  end
 end
