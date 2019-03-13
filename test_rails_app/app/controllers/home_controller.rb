@@ -9,6 +9,14 @@ class HomeController < ApplicationController
 
   def students
     @students = ::Student.all
-    render json: @students
+    students_arr = @students.map do |s|
+      {full_name: s.full_name}
+    end
+    logger.info "students_arr: #{students_arr}"
+    render json: students_arr
+  end
+
+  def all_students
+    render json: Student.all
   end
 end
