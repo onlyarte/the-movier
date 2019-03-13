@@ -21,10 +21,10 @@ git push origin example_team_project
 ### Вимоги до проекта
 Проект на вільну тему, але з деякими обмеженнями, а саме:
 
-* Будь-який Rack framework на Ruby: Ruby on Rails, Sinatra, Roda, Cuba, Padrino, ...
+* Будь-який Rack framework на Ruby: Ruby on Rails, Sinatra, Hanami, Roda, Cuba, Padrino, ...
 * Аутентифікація користувачів
 * Авторизація, мінімум 2 ролі користувачів з різними правами доступу
-* Деякі елементи UI зроблені за допомогою AJAX (не всі, хоча б щось). Або SPA.
+* Деякі елементи клієнт-серверної взаємодії зроблені за допомогою AJAX (не всі, хоча б щось). Або SPA.
 * Хоча б одна задача, яка виконується в фоновому режимі (за допомогою Sidekiq або аналогів)
 * Автоматизоване тестування. Бажано покриття тестами 100% функціональності. Як мінімум: деякі unit-тести і acceptance-тест для main flow
 * Бажано підготовка для запуску в production середовищі, використання production-ready ruby сервера (а не Webrick), e.g. Puma, Unicorn, Passenger і production-ready СУБД, e.g. PostgreSQL
