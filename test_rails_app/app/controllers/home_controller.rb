@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
   def index
     render json: {ok: true, name: params[:name]}
   end
 
   def hello
-    render text: "<h2>Hello, world!</h2>"
   end
 
   def students
@@ -17,6 +17,6 @@ class HomeController < ApplicationController
   end
 
   def all_students
-    render json: Student.all
+    @students = ::Student.all
   end
 end
