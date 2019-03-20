@@ -3,7 +3,7 @@
 
 ### Матеріали Курсу
 * [Lecture screencasts](https://drive.google.com/drive/folders/16PKxIJRDgXPCP0Nr0wTrSg5x_u-SSYmj?usp=sharing)
-* [Робочий тематичний план (GoogleDocs)](https://docs.google.com/document/d/11yrjjiSQ49Fb6wZ7ytgMdkGpWUKV1sFcPGCSSjZk2WA/edit?usp=sharing)
+* [Робочий тематичний план (GoogleDocs)](https://docs.google.com/document/d/1QD4AS5HUm34fQUdZT3J6kW1KJAN06rCDg-oJvAJC70Q/edit?usp=sharing)
 * [Repository 2017 року (BitBucket)](https://bitbucket.org/burius/ruby_course_2017)
 * [Repository 2016 року (BitBucket)](https://bitbucket.org/burius/ror_course)
 
