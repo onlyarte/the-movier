@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :courses
   get '/', to: 'home#index'
   get '/hello', to: 'home#hello'
   get '/students', to: 'home#students'
