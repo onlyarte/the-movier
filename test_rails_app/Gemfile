@@ -32,8 +32,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
-gem 'devise'
 
+# auth
+gem 'devise'
+gem 'cancancan', '~> 2.0'
+
+# bg ops
+gem 'sidekiq', '~> 4'
+
+# admin interface
+gem 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
