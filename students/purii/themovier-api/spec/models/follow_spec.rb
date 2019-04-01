@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Follow, type: :model do
-  # ensure a follow record belongs to a single follower
-  it { should belong_to(:follower) }
-
-  # ensure a follow record belongs to a single following
+  # ensure a follow record belongs to a single following user
   it { should belong_to(:following) }
 
-  # ensure columns follower and following are present before saving
-  it { should validate_presence_of(:follower) }
+  # ensure a follow record belongs to a single followed user
+  it { should belong_to(:followed) }
+
+  # ensure columns following and followed are present before saving
   it { should validate_presence_of(:following) }
+  it { should validate_presence_of(:followed) }
   it { should validate_presence_of(:created_at) }
 end

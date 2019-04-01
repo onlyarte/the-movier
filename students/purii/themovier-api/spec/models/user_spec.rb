@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   it { should have_many(:follows).dependent(:destroy) }
 
   # ensure one user follows many users
-  it { should have_many(:followings) }
+  it { should have_many(:following) }
 
   # ensure one user has many followers
   it { should have_many(:followers) }
