@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Follow, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # ensure a follow record belongs to a single follower
+  it { should belong_to(:follower) }
+
+  # ensure a follow record belongs to a single following
+  it { should belong_to(:following) }
+
+  # ensure columns follower and following are present before saving
+  it { should validate_presence_of(:follower) }
+  it { should validate_presence_of(:following) }
 end
