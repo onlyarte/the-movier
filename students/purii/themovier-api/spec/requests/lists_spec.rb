@@ -71,7 +71,7 @@ RSpec.describe 'Lists API', type: :request do
 
       it 'updates the record' do
         expect(json).not_to be_empty
-        expect(json['title']).to eq(valid_attributes.title)
+        expect(json['title']).to eq(valid_attributes[:title])
       end
 
       it 'returns status code 200' do
