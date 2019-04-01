@@ -54,7 +54,7 @@ RSpec.describe 'Movies API', type: :request do
       before { post '/movies', params: valid_attributes }
 
       it 'creates a movie' do
-        expect(json['title']).to eq('Only lovers left alive')
+        expect(json['title']).to eq(valid_attributes[:title])
       end
 
       it 'returns status code 201' do

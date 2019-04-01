@@ -46,7 +46,7 @@ RSpec.describe 'Lists API', type: :request do
       before { post '/lists', params: valid_attributes }
 
       it 'creates a list' do
-        expect(json['title']).to eq('Favourites')
+        expect(json['title']).to eq(valid_attributes[:title])
       end
 
       it 'returns status code 201' do
