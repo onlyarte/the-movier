@@ -5,11 +5,11 @@ FactoryBot.define do
     runtime { Faker::Number.between(40, 140) }
     genre { Faker::Lorem.words(3).join(", ") }
     directors { Faker::Lorem.words(2).join(", ") }
-    writers nil
-    actors nil
+    writers { nil }
+    actors { nil }
     plot { Faker::Lorem.sentence }
     country { Faker::Lorem.word }
-    poster nil
+    poster { nil }
     imdb_rating { Faker::Number.between(3, 9) + 0.2 }
   end
 end

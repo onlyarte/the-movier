@@ -4,6 +4,6 @@ FactoryBot.define do
     password { Faker::Lorem.word }
     username { Faker::Lorem.word }
     name { Faker::Lorem.word }
-    is_super false
+    is_super { false }
   end
 end
