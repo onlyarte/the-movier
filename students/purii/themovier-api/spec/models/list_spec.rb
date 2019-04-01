@@ -10,8 +10,7 @@ RSpec.describe List, type: :model do
   # ensure one list has many movies
   it { should have_many(:movies) }
 
-  # ensure columns title, author and created_at are present before saving
+  # ensure columns title and author are present before saving
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:author) }
-  it { should validate_presence_of(:created_at) }
 end

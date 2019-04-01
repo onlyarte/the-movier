@@ -10,5 +10,4 @@ RSpec.describe Follow, type: :model do
   # ensure columns following and followed are present before saving
   it { should validate_presence_of(:following) }
   it { should validate_presence_of(:followed) }
-  it { should validate_presence_of(:created_at) }
 end
