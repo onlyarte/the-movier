@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :lists, foreign_key: :author_id, dependent: :destroy
 
   # validations
-  validates_presence_of :email, :password, :username, :name, :is_super
+  validates_presence_of :email, :password, :username, :name
 end

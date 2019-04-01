@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Lists API', type: :request do
   # init test data
-  let!(:author) { create(:user, is_super: true) }
+  let!(:author) { create(:user) }
   let!(:lists) { create_list(:list, 10, author_id: author.id) }
   let(:author_id) { author.id }
   let(:list_id) { lists.first.id }
