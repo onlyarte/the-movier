@@ -4,7 +4,10 @@ RSpec.describe List, type: :model do
   # ensure a list record belongs to a single author
   it { should belong_to(:author) }
 
-  # ensure the List model has a 1:m relationship with the Movie model
+  # ensure one list has many list-movies
+  it { should have_many(:list_movies) }
+
+  # ensure one list has many movies
   it { should have_many(:movies) }
 
   # ensure columns title, author and created_at are present before saving
