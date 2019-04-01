@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_064521) do
+ActiveRecord::Schema.define(version: 2019_04_01_063107) do
 
   create_table "follows", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "follower_id"
-    t.integer "following_id"
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["followed_id"], name: "index_follows_on_followed_id"
     t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2019_04_01_064521) do
 
   create_table "lists", force: :cascade do |t|
     t.string "title"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "author_id"
     t.index ["author_id"], name: "index_lists_on_author_id"
   end
 
