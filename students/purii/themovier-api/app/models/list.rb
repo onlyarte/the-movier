@@ -5,5 +5,5 @@ class List < ApplicationRecord
   has_many :movies, through: :list_movies
 
   # validations
-  validates_presence_of :title, :author, :created_at
+  validates_presence_of :title, :author
 end

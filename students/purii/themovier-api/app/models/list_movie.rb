@@ -4,5 +4,5 @@ class ListMovie < ApplicationRecord
   belongs_to :list
 
   # validations
-  validates_presence_of :list, :movie, :created_at
+  validates_presence_of :list, :movie
 end

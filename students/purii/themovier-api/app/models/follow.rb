@@ -4,5 +4,5 @@ class Follow < ApplicationRecord
   belongs_to :followed, class_name: "User"
 
   # validations
-  validates_presence_of :following, :followed, :created_at
+  validates_presence_of :following, :followed
 end
