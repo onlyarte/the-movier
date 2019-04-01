@@ -17,7 +17,7 @@ RSpec.describe 'Lists API', type: :request do
   end
 
   describe 'GET /lists/:id' do
-    before { get "/lists#{list_id}" }
+    before { get "/lists/#{list_id}" }
 
     context 'when the record exists' do
       it 'returns the list' do

@@ -9,7 +9,7 @@ class ListsController < ApplicationController
 
   # POST /lists
   def create
-    @list = Todo.create!(list_params)
+    @list = List.create!(list_params)
     json_response(@list, :created)
   end
 
