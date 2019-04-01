@@ -1,0 +1,49 @@
+Movie
+- id:primary_key
+- title:string
+- year:number
+- runtime:integer
+- genre:string
+- directors:string
+- writers:string
+- actors:string
+- plot:string
+- country:string
+- poster:string
+- imdb_rating:decimal
+
+rails generate model Movie title:string year:number runtime:integer genre:string directors:string writers:string actors:string plot:string country:string poster:string imdb_rating:decimal
+
+User
+- id:primary_key
+- email:string:index
+- password:string
+- username:string:uniq:index
+- name:string
+- is_super:boolean
+
+rails generate model User email:string:index password:string username:string:uniq:index name:string is_super:boolean
+
+List
+- id:primary_key
+- title:string
+- author:references => User
+- created_at:timestamp
+
+rails generate model List title:string author:references created_at:timestamp
+
+ListMovie
+- id:primary_key
+- movie:references => Movie
+- list:references => List
+- created_at:timestamp
+
+rails generate model ListMovie movie:references list:references created_at:timestamp
+
+Follow
+- id:primary_key
+- follower:references => User
+- following:references => User
+- created_at:timestamp
+
+rails generate model Follow follower:references following:references created_at:timestamp
