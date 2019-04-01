@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   it { should have_many(:followers) }
 
   # ensure one user has many lists
-  it { should have_many(:lists) }
+  it { should have_many(:lists).dependent(:destroy) }
 
   # ensure columns email, password, username, name and is_super are present before saving
   it { should validate_presence_of(:email) }
