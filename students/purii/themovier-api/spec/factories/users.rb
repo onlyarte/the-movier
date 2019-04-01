@@ -3,7 +3,7 @@ FactoryBot.define do
     email { Faker::Lorem.word + "@gmail.com" }
     password { Faker::Lorem.word }
     username { Faker::Lorem.word }
-    name { Faker::Lorem.word }
-    is_super { false }
+    name { Faker::Superhero.name }
+    is_super { Faker::Boolean.boolean }
   end
 end
