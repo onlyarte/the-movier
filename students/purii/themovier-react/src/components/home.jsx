@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import LoginForm from '../containers/login-form';
 
 const styles = theme => ({
   paper: {
-    padding: 0,
-    height: '100vh',
+    padding: 20,
+    height: 'calc(100vh - 40px)',
     borderRadius: 0,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'black',
-    color: 'white',
+    background: theme.palette.primary.dark,
+    color: theme.palette.primary.contrastText,
   },
   mergimText: {
     fontFamily: 'Megrim, cursive',
@@ -28,12 +28,12 @@ const styles = theme => ({
 
 function Home({ classes }) {
   return (
-    <Grid container spacing={12}>
+    <Grid container spacing={0}>
       <Grid item xs={12} md={6} lg={5}>
-        <Paper className={classes.paper}>DEFAULT LIST</Paper>
+        <div className={classes.paper}>DEFAULT LIST</div>
       </Grid>
       <Grid item xs={12} md={6} lg={7}>
-        <Paper className={classes.paper}>
+        <div className={classes.paper}>
           <Typography variant="h3" className={classes.mergimText}>
             THE MOVIER
           </Typography>
@@ -45,7 +45,7 @@ function Home({ classes }) {
           </Typography>
 
           <LoginForm />
-        </Paper>
+        </div>
       </Grid>
     </Grid>
   );

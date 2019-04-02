@@ -28,6 +28,7 @@ const styles = theme => ({
     color: 'white',
     background: 'none',
     cursor: 'pointer',
+    outline: 'none',
   },
   buttonGroupItem: {
     margin: '20px',

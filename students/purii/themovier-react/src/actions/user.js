@@ -13,13 +13,28 @@ export const destroyUser = () => ({
 });
 
 export const logIn = ({ username, password }) => dispatch => {
-  return null;
+  return axios
+    .post('http://localhost:3000/auth/login', { username, password })
+    .then(({ data }) => {
+      console.log(data);
+      dispatch(receiveUser(data));
+    });
+};
+
+export const logOut = () => dispatch => {
+  return dispatch(destroyUser());
 };
 
 export const signUp = ({ username, password, email, name }) => dispatch => {
   return axios
-    .post('http://localhost:3000/users', { username, password, email, name })
+    .post('http://localhost:3000/auth/signup', {
+      username,
+      password,
+      email,
+      name,
+    })
     .then(({ data }) => {
       console.log(data);
+      dispatch(receiveUser(data));
     });
 };

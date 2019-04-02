@@ -5,22 +5,29 @@ export const DESTROY_LIST = 'DESTROY_LIST';
 
 export const receiveLists = lists => ({
   type: RECEIVE_LISTS,
-  lists,
+  lists: lists.reduce(
+    (accumulator, list) => ({ ...accumulator, [list.id]: list }),
+    {}
+  ),
 });
 
-export const destroyList = () => ({
+export const destroyList = listId => ({
   type: DESTROY_LIST,
+  listId,
 });
 
 export const fetchList = listId => dispatch => {
   return axios.get(`http://localhost:3000/lists/${listId}`).then(({ data }) => {
     console.log(data);
+    dispatch(receiveLists([data]));
   });
 };
 
-export const insertOne = list => dispatch => {
-  return axios.post(
-    ``,
-    list
-  )
-}
+export const fetchUserLists = userId => dispatch => {
+  return axios
+    .get(`http://localhost:3000/users/${userId}/lists`)
+    .then(({ data }) => {
+      console.log(data);
+      dispatch(receiveLists(data));
+    });
+};

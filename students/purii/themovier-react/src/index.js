@@ -17,8 +17,18 @@ const store = configureStore();
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-    primary: GreyPalette,
-    secondary: BluePalette,
+    primary: {
+      main: '#212121',
+      light: '#484848',
+      dark: '#000000',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: '#1976d2',
+      light: '#63a4ff',
+      dark: '#004ba0',
+      contrastText: '#ffffff',
+    },
     grey: GreyPalette,
     blue: BluePalette,
     pink: PinkPalette,
@@ -27,6 +37,7 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
+    fontSize: 16,
   },
 });
 

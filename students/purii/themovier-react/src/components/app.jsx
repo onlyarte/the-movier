@@ -5,18 +5,25 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Fab from '@material-ui/core/Fab';
 import Nav from './nav';
 import Home from './home';
-import Lists from './lists/index';
+import List from '../containers/list';
+import Movie from '../containers/movie';
+import Admin from './admin/index';
 
 const styles = theme => ({
   root: {
     position: 'relative',
   },
   fab: {
-    margin: theme.spacing.unit * 2,
     position: 'absolute',
     top: 0,
     left: 0,
+    zIndex: 100,
+    margin: theme.spacing.unit * 2,
   },
+  main: {
+    width: '100%',
+    height: '100vh',
+  }
 });
 
 class App extends Component {
@@ -47,9 +54,11 @@ class App extends Component {
 
           <Nav isOpen={isNavOpen} onClose={this.toggleNav} />
           
-          <main>
+          <main className={classes.main}>
             <Route exact path="/" component={Home} />
-            <Route path="/lists" component={Lists} />
+            <Route path="/lists/:listId" component={List} />
+            <Route path="/movies/:movieId" component={Movie} />
+            <Route path="/admin" component={Admin} />
           </main>
         </div>
       </Router>

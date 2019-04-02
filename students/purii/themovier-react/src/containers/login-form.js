@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
-import { signUp } from '../actions/user';
+import { logIn, signUp } from '../actions/user';
 import LoginForm from '../components/login-form';
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
+  onLogIn: ({ username, password }) =>
+    dispatch(logIn({ username, password })),
   onSignUp: ({ username, password, email, name }) =>
     dispatch(signUp({ username, password, email, name })),
 });
