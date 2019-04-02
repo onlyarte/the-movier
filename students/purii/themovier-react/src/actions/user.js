@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const DESTROY_USER = 'DESTROY_USER';
 
@@ -15,5 +17,9 @@ export const logIn = ({ username, password }) => dispatch => {
 };
 
 export const signUp = ({ username, password, email, name }) => dispatch => {
-  return null;
+  return axios
+    .post('http://localhost:3000/users', { username, password, email, name })
+    .then(({ data }) => {
+      console.log(data);
+    });
 };

@@ -54,12 +54,25 @@ class LoginForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+
+    const { onLogIn, onSignUp } = this.props;
+    const { mode, username, password, email, name } = this.state;
+
+    switch (mode) {
+      case 'login':
+        onLogIn({ username, password });
+        break;
+      case 'signup':
+        onSignUp({ username, password, email, name });
+        break;
+      default:
+        console.log(this.state);
+    }
   };
 
   render() {
     return (
-      <form className={this.props.classes.form}>
+      <form className={this.props.classes.form} onSubmit={this.handleSubmit}>
         <div className={this.props.classes.buttonGroup}>
           <Button
             component="span"
@@ -93,7 +106,7 @@ class LoginForm extends Component {
           <input
             type="password"
             name="password"
-            value={this.state.username}
+            value={this.state.password}
             onChange={this.handleChange}
             placeholder="PASSWORD"
             className={this.props.classes.input}
@@ -118,7 +131,7 @@ class LoginForm extends Component {
         {this.state.mode === 'signup' && (
           <div className={this.props.classes.formControl}>
             <input
-              type="name"
+              type="text"
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
