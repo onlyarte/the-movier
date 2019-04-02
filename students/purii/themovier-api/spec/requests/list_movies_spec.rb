@@ -18,7 +18,6 @@ RSpec.describe 'ListMovies API', type: :request do
     context 'when the list exists' do
       it 'returns all list movies' do
         expect(json.size).to eq(1)
-        puts json
       end
 
       it 'returns status code 200' do
@@ -47,7 +46,7 @@ RSpec.describe 'ListMovies API', type: :request do
     end
 
     context 'when params are wrong' do
-      before { post '/movies', params: { movie_id: 301 } }
+      before { post "/lists/#{list_id}/movies", params: { movie_id: 301 } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
