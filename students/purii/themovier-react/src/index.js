@@ -1,21 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as StoreProvider } from 'react-redux';
-import './index.css';
-import App from './App';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import GreyPalette from '@material-ui/core/colors/grey';
+import BluePalette from '@material-ui/core/colors/blue';
+import PinkPalette from '@material-ui/core/colors/pink';
+import RedPalette from '@material-ui/core/colors/red';
+import BlueGrey from '@material-ui/core/colors/blueGrey';
+import App from './components/app';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './config-store';
+import './index.css';
 
 const store = configureStore();
 
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: GreyPalette,
+    secondary: BluePalette,
+    grey: GreyPalette,
+    blue: BluePalette,
+    pink: PinkPalette,
+    red: RedPalette,
+    blueGrey: BlueGrey,
+  },
+  typography: {
+    useNextVariants: true,
+  },
+});
+
 ReactDOM.render(
-  (
-    <StoreProvider store={store}>
-      {/* <MuiThemeProvider theme={theme}> */}
-        <App />
-      {/* </MuiThemeProvider> */}
-    </StoreProvider>
-  ),
+  <StoreProvider store={store}>
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
+  </StoreProvider>,
   document.getElementById('root')
 );
 
