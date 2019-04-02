@@ -35,12 +35,12 @@ RSpec.describe 'Auth API', type: :request do
 
   describe 'POST /auth/login' do
     let(:valid_params) { {
-      email: user[:email],
+      username: user[:username],
       password: user[:password],
     } }
 
     let(:invalid_params) { {
-      email: 'kjhkd@jk.jj',
+      username: 'kjhkd',
       password: 'ds'
     } }
 
@@ -48,7 +48,7 @@ RSpec.describe 'Auth API', type: :request do
       before { post '/auth/login', params: valid_params }
 
       it 'returns the user' do
-        expect(json['email']).to eq(valid_attributes[:email])
+        expect(json['username']).to eq(valid_params[:username])
       end
 
       it 'returns status code 201' do
@@ -59,8 +59,8 @@ RSpec.describe 'Auth API', type: :request do
     context 'when the record does not exist' do
       before { post '/auth/login', params: invalid_params }
 
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
       end
     end
   end

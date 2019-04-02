@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     post 'followings', :to => 'follows#create'
     delete 'followings/:followed_id', :to => 'follows#destroy'
   end
+
+  post 'auth/login', :to => 'auth#login'
+  post 'auth/signup', :to => 'auth#signup'
 end
