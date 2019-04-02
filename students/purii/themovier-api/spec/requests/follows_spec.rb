@@ -9,7 +9,7 @@ RSpec.describe 'Follows API', type: :request do
 
   describe 'GET /users/:user_id/followings' do
     before do
-      post "/users/#{user1_id}/followings", params: { user_id: user2_id }
+      post "/users/#{user1_id}/followings", params: { followed_id: user2_id }
       get "/users/#{user1_id}/followings"
     end
 
@@ -23,7 +23,10 @@ RSpec.describe 'Follows API', type: :request do
   end
 
   describe 'GET /users/:user_id/followers' do
-    before { get "/users/#{user2_id}/followers" }
+    before do
+      post "/users/#{user1_id}/followings", params: { followed_id: user2_id }
+      get "/users/#{user2_id}/followers"
+    end
 
     it 'returns all followers' do
       expect(json.size).to eq(1)
@@ -35,7 +38,7 @@ RSpec.describe 'Follows API', type: :request do
   end
 
   describe 'POST /users/:user_id/followings' do
-    let(:valid_attributes) { { user_id: user1_id } }
+    let(:valid_attributes) { { followed_id: user1_id } }
 
     context 'when params are valid' do
       before { post "/users/#{user2_id}/followings", params: valid_attributes }
@@ -46,7 +49,7 @@ RSpec.describe 'Follows API', type: :request do
     end
 
     context 'when params are wrong' do
-      before { post "/users/#{user2_id}/followings", params: { user_id: 301 } }
+      before { post "/users/#{user2_id}/followings", params: { followed_id: 301 } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -56,6 +59,7 @@ RSpec.describe 'Follows API', type: :request do
 
   describe 'DELETE /users/:user_id/followings/:followed_id' do
     before do
+      post "/users/#{user1_id}/followings", params: { followed_id: user2_id }
       delete "/users/#{user1_id}/followings/#{user2_id}"
     end
 
