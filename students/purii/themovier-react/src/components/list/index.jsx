@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import Link from '../link';
 import Loading from '../loading';
+import ListPanel from '../../containers/movie/list-panel';
 
 const styles = theme => ({
   istokText: {
@@ -196,6 +197,8 @@ class List extends Component {
                   </Typography>
                 </Grid>
               </Grid>
+
+              <ListPanel movieId={activeMovie.id} />
             </div>
           )}
         </Grid>

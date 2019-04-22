@@ -6,8 +6,8 @@ import Fab from '@material-ui/core/Fab';
 import Nav from './nav';
 import Home from './home';
 import List from '../containers/list';
-import Movie from '../containers/movie';
-import User from '../containers/user';
+import Movie from '../containers/movie/index';
+import User from '../containers/user/index';
 import Admin from './admin/index';
 
 const styles = theme => ({

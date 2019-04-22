@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import Link from '../link';
 import Loading from '../loading';
+import FollowBtn from '../../containers/user/follow-btn';
+import EditBtn from '../../containers/user/edit-btn';
 
 const styles = theme => ({
   istokText: {
@@ -72,6 +74,9 @@ const styles = theme => ({
     margin: '15px 0px',
     textAlign: 'center',
   },
+  gutterBottom: {
+    marginBottom: theme.spacing.unit * 3,
+  },
 });
 
 class User extends Component {
@@ -81,8 +86,6 @@ class User extends Component {
 
   render() {
     const { user, classes } = this.props;
-
-    console.log(this.props);
 
     if (!user) return <Loading />;
 
@@ -99,52 +102,65 @@ class User extends Component {
                 <Typography variant="h6" className={classes.frontTitle}>
                   {user.name.toUpperCase()}
                 </Typography>
+                <FollowBtn userId={user.id} />
+                <EditBtn userId={user.id} />
               </div>
             </div>
           </div>
         </Grid>
         <Grid item xs={12} md={6} lg={7}>
           <div className={classNames(classes.paper, classes.rightPaper)}>
-            <Typography variant="h4" gutterBottom>
-              Following
-            </Typography>
+            <div className={classes.gutterBottom}>
+              <Typography variant="h4" gutterBottom>
+                Following
+              </Typography>
 
-            <div className={classes.slider}>
-              {user.followings &&
-                user.followings.map(following => (
-                  <Link to={`/users/${following.id}`}>
-                    <div className={classes.sliderItem} key={following.id}>
-                      <img src={following.image} alt="user" height={200} />
-                      <div className={classes.sliderItemTitle}>{following.name}</div>
-                    </div>
-                  </Link>
-                ))}
+              {user.followings && user.followings.length > 0 ? (
+                <div className={classes.slider}>
+                  {user.followings.map(following => (
+                    <Link to={`/users/${following.id}`} key={following.id}>
+                      <div className={classes.sliderItem}>
+                        <img src={following.image} alt="user" height={200} />
+                        <div className={classes.sliderItemTitle}>
+                          {following.name}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <Typography variant="subtitle1" gutterBottom>
+                  Not found
+                </Typography>
+              )}
             </div>
 
-            <Typography variant="h4" gutterBottom>
-              Lists
-            </Typography>
+            <div className={classes.gutterBottom}>
+              <Typography variant="h4" gutterBottom>
+                Lists
+              </Typography>
 
-            <div className={classes.slider}>
-              {user.lists &&
-                user.lists.map(list => (
-                  <Link to={`/lists/${list.id}`}>
-                    <div className={classes.sliderItem} key={list.id}>
-                      <img
-                        src={
-                          list.movies && list.movies.length > 0
-                            ? list.movies[0].poster
-                            : ''
-                        }
-                        alt="movie poster"
-                        height={300}
-                      />
-                      <div className={classes.sliderItemTitle}>
-                        {list.title}
+              <div className={classes.slider}>
+                {user.lists &&
+                  user.lists.map(list => (
+                    <Link to={`/lists/${list.id}`} key={list.id}>
+                      <div className={classes.sliderItem}>
+                        <img
+                          src={
+                            list.movies && list.movies.length > 0
+                              ? list.movies[0].poster
+                              : ''
+                          }
+                          alt="movie poster"
+                          height={300}
+                        />
+                        <div className={classes.sliderItemTitle}>
+                          {list.title}
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+              </div>
             </div>
           </div>
         </Grid>

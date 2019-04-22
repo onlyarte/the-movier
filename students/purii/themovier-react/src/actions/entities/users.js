@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { receiveLists } from './lists';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const DESTROY_USER = 'DESTROY_USER';
@@ -32,7 +33,6 @@ export const fetchUser = user_id => dispatch => {
     .get(`http://localhost:3000/users/${user_id}`)
     .then(({ data }) => {
       dispatch(receiveUser(data));
-      console.log(data);
       return data;
     });
 };
@@ -46,3 +46,27 @@ export const fetchUserFollowings = user_id => dispatch => {
       return data;
     });
 };
+
+export const fetchUserLists = user_id => dispatch => {
+  return axios
+    .get(`http://localhost:3000/users/${user_id}/lists`)
+    .then(({ data }) => {
+      dispatch(receiveLists(data));
+      dispatch(pushListsToUser(user_id, data.map(l => l.id)));
+      return data;
+    });
+};
+
+export const follow = (following_id, followed_id) => dispatch => {
+  return axios
+    .post(`http://localhost:3000/users/${following_id}/followings`, {
+      followed_id,
+    })
+    .then(() => dispatch(fetchUserFollowings(following_id)));
+};
+
+export const unfollow = (following_id, followed_id) => dispatch => {
+  return axios
+    .delete(`http://localhost:3000/users/${following_id}/followings/${followed_id}`)
+    .then(() => dispatch(fetchUserFollowings(following_id)));
+}

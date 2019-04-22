@@ -8,7 +8,7 @@ const NAMESPACE = 'ahli7fdha728gf782gh4fjs';
 
 const localStorageMiddleware = save({ namespace: NAMESPACE });
 
-export default function configureStore(preloadedState) {
+export default function configureStore(preloadedState = load({ namespace: NAMESPACE })) {
   return createStore(
     rootReducer,
     preloadedState,

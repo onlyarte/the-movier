@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchList, pushMoviesToList } from '../actions/entities/lists';
-import { fetchListMovies } from '../actions/entities/movies';
+import { fetchList } from '../actions/entities/lists';
+import { fetchListMovies } from '../actions/entities/lists';
 import { fetchUser } from '../actions/entities/users';
 import List from '../components/list/index';
 

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { fetchUserLists } from '../actions/entities/lists';
-import { fetchListMovies } from '../actions/entities/movies';
-import { fetchUser, fetchUserFollowings } from '../actions/entities/users';
-import User from '../components/user/index';
+import { fetchUserLists } from '../../actions/entities/users';
+import { fetchListMovies } from '../../actions/entities/lists';
+import { fetchUser, fetchUserFollowings } from '../../actions/entities/users';
+import User from '../../components/user/index';
 
 const mapStateToProps = state => ({ state });
 const mapDispatchToProps = dispatch => ({ dispatch });

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { pushListsToUser } from './users';
+import { receiveMovies } from './movies';
 
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const DESTROY_LIST = 'DESTROY_LIST';
@@ -33,12 +33,24 @@ export const fetchList = list_id => dispatch => {
     });
 };
 
-export const fetchUserLists = user_id => dispatch => {
+export const fetchListMovies = list_id => dispatch => {
   return axios
-    .get(`http://localhost:3000/users/${user_id}/lists`)
+    .get(`http://localhost:3000/lists/${list_id}/movies`)
     .then(({ data }) => {
-      dispatch(receiveLists(data));
-      dispatch(pushListsToUser(user_id, data.map(l => l.id)));
+      dispatch(receiveMovies(data));
+      dispatch(pushMoviesToList(list_id, data.map(m => m.id)));
       return data;
     });
+};
+
+export const addMovieToList = (list_id, movie_id) => dispatch => {
+  return axios
+    .post(`http://localhost:3000/lists/${list_id}/movies`, { movie_id })
+    .then(() => dispatch(fetchListMovies(list_id)));
+};
+
+export const deleteMovieFromList = (list_id, movie_id) => dispatch => {
+  return axios
+    .delete(`http://localhost:3000/lists/${list_id}/movies/${movie_id}`)
+    .then(() => dispatch(fetchListMovies(list_id)));
 };
