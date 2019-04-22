@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_063107) do
+ActiveRecord::Schema.define(version: 2019_04_21_160755) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "following_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_063107) do
     t.boolean "is_super"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["email"], name: "index_users_on_email"
     t.index ["username"], name: "index_users_on_username", unique: true
   end

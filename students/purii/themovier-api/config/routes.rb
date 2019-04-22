@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'followers', :to => 'follows#show_followers'
     post 'followings', :to => 'follows#create'
     delete 'followings/:followed_id', :to => 'follows#destroy'
+    get 'lists', :to => 'lists#show_by_user'
   end
 
   post 'auth/login', :to => 'auth#login'

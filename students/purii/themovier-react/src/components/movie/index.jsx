@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import { Grid, Typography } from '@material-ui/core';
 import Loading from '../loading';
 
 const styles = theme => ({
@@ -11,7 +10,7 @@ const styles = theme => ({
     fontFamily: 'Istok Web, sans-serif',
     '& *': {
       fontFamily: 'Istok Web, sans-serif',
-    }
+    },
   },
   paper: {
     height: 'calc(100vh - 40px)',
@@ -25,16 +24,18 @@ const styles = theme => ({
   leftPaper: {
     justifyContent: 'center',
     alignItems: 'center',
-    overflow: 'hidden',
   },
   layerContainer: {
     position: 'relative',
   },
   backLayer: {
-    width: '90%',
+    width: '100%',
     height: '100vh',
+    overflow: 'hidden',
+  },
+  backPoster: {
     filter: 'blur(15px)',
-    background: 'cover center no-repeat',
+    transform: 'scale(1.1)',
   },
   frontLayer: {
     position: 'absolute',
@@ -44,15 +45,14 @@ const styles = theme => ({
     background: 'none',
   },
   rightPaper: {
-    clear: 'both',
+    // clear: 'both',
     background: theme.palette.primary.dark,
   },
 });
 
 class Movie extends Component {
   componentDidMount() {
-    const { movie, fetch } = this.props;
-    if (!movie) fetch();
+    this.props.fetch();
   }
 
   render() {
@@ -62,15 +62,14 @@ class Movie extends Component {
 
     return (
       <Grid container spacing={0} className={classes.istokText}>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={5}>
           <div className={classes.layerContainer}>
-            <div
-              className={classes.backLayer}
-              style={{ backgroundImage: `url(${movie.poster})` }}
-            />
+            <div className={classes.backLayer}>
+              <img src={movie.poster} className={classes.backPoster} />
+            </div>
             <div className={classes.frontLayer}>
               <div className={classNames(classes.paper, classes.leftPaper)}>
-                <Typography variant="h5" gutterBottom>
+                <Typography variant="h6" gutterBottom>
                   {movie.title.toUpperCase()}
                 </Typography>
                 <img src={movie.poster} alt="movie poster" width={400} />
@@ -78,7 +77,7 @@ class Movie extends Component {
             </div>
           </div>
         </Grid>
-        <Grid item xs={12} md={6} lg={8}>
+        <Grid item xs={12} md={6} lg={7}>
           <div className={classNames(classes.paper, classes.rightPaper)}>
             <Typography variant="h4" gutterBottom>
               {movie.title}
@@ -96,24 +95,36 @@ class Movie extends Component {
 
             <br />
 
-            <Grid container spacing={2}>
+            <Grid container spacing={8}>
               <Grid item xs={12} md={6} lg={4}>
-                <Typography variant="body1" gutterBottom>Director</Typography>
+                <Typography variant="body1" gutterBottom>
+                  Director
+                </Typography>
               </Grid>
               <Grid item xs={12} md={6} lg={8}>
-                <Typography variant="body1" gutterBottom>{movie.directors}</Typography>
+                <Typography variant="body1" gutterBottom>
+                  {movie.directors}
+                </Typography>
               </Grid>
               <Grid item xs={12} md={6} lg={4}>
-                <Typography variant="body1" gutterBottom>Writer</Typography>
+                <Typography variant="body1" gutterBottom>
+                  Writer
+                </Typography>
               </Grid>
               <Grid item xs={12} md={6} lg={8}>
-                <Typography variant="body1" gutterBottom>{movie.writers}</Typography>
+                <Typography variant="body1" gutterBottom>
+                  {movie.writers}
+                </Typography>
               </Grid>
               <Grid item xs={12} md={6} lg={4}>
-                <Typography variant="body1" gutterBottom>Acting</Typography>
+                <Typography variant="body1" gutterBottom>
+                  Acting
+                </Typography>
               </Grid>
               <Grid item xs={12} md={6} lg={8}>
-                <Typography variant="body1" gutterBottom>{movie.actors}</Typography>
+                <Typography variant="body1" gutterBottom>
+                  {movie.actors}
+                </Typography>
               </Grid>
             </Grid>
           </div>

@@ -18,6 +18,12 @@ class ListsController < ApplicationController
     json_response(@list)
   end
 
+  # GET /users/:id/lists
+  def show_by_user
+    user = User.find(params[:user_id])
+    json_response(user.lists)
+  end
+
   # PATCH /lists/:id
   def update
     @list.update(list_params)

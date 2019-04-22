@@ -7,6 +7,7 @@ import Nav from './nav';
 import Home from './home';
 import List from '../containers/list';
 import Movie from '../containers/movie';
+import User from '../containers/user';
 import Admin from './admin/index';
 
 const styles = theme => ({
@@ -44,7 +45,7 @@ class App extends Component {
       <Router>
         <div className={classes.root}>
           <Fab
-            color="secondary"
+            color="primary"
             aria-label="Add"
             className={classes.fab}
             onClick={this.toggleNav}
@@ -58,6 +59,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/lists/:listId" component={List} />
             <Route path="/movies/:movieId" component={Movie} />
+            <Route path="/users/:userId" component={User} />
             <Route path="/admin" component={Admin} />
           </main>
         </div>

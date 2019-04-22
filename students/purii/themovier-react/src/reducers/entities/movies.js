@@ -10,7 +10,7 @@ const movies = (state = {}, action) => {
     case DESTROY_MOVIE:
       return {
         ...state,
-        [action.movieId]: undefined,
+        [action.movie_id]: undefined,
       };
     default:
       return state;

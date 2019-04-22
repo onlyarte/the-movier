@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :show_lists, :update, :destroy]
 
   # GET /users
   def index
@@ -39,6 +39,7 @@ class UsersController < ApplicationController
       :password,
       :username,
       :name,
+      :image,
       :is_super
     )
   end

@@ -2,15 +2,25 @@ import { connect } from 'react-redux';
 import { fetchMovie } from '../actions/entities/movies';
 import Movie from '../components/movie/index';
 
-const mapStateToProps = (state, ownProps) => ({
-  movie: state.entities.movies[ownProps.match.params.movieId],
-});
+const mapStateToProps = state => ({ state });
+const mapDispatchToProps = dispatch => ({ dispatch });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetch: () => dispatch(fetchMovie(ownProps.match.params.movieId)),
-});
+const mergeProps = ({ state }, { dispatch }, ownProps) => {
+  const props = {};
+
+  props.movie = state.entities.movies[ownProps.match.params.movieId];
+
+  props.fetch = () => {
+    if (!props.movie) {
+      dispatch(fetchMovie(ownProps.match.params.movieId));
+    }
+  };
+
+  return props;
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(Movie);
