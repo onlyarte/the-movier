@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => ({ dispatch });
 
 const mergeProps = ({ state }, { dispatch }, ownProps) => {
   const props = {};
-  const currentUser = state.entities.users[state.session.userId];
+  const currentUser = state.session && state.entities.users[state.session.userId];
   if (currentUser && currentUser.id !== ownProps.userId) {
     if (currentUser.following_ids) {
       if (currentUser.following_ids.includes(ownProps.userId)) {

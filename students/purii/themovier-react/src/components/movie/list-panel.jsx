@@ -13,21 +13,22 @@ const styles = theme => ({
     width: 120,
     height: 50,
     padding: '0px 20px',
-    border: 'none',
+    border: `3px solid ${theme.palette.primary.main}`,
     borderRadius: 50,
     color: 'white',
-    background: theme.palette.primary.main,
+    background: theme.palette.primary.dark,
     cursor: 'pointer',
     outline: 'none',
     fontWeight: 800,
   },
   itemActive: {
-    background: theme.palette.primary.light,
+    background: theme.palette.primary.main,
   },
 });
 
 function ListPanel({ movieId, lists, onAdd, onDelete, classes }) {
-  console.log(lists);
+  if (!lists) return null;
+
   return (
     <div className={classes.panel}>
       {lists.map(list => (

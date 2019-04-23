@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => ({ dispatch });
 
 const mergeProps = ({ state }, { dispatch }, ownProps) => {
   const props = { ...ownProps };
-  const currentUser = state.entities.users[state.session.userId];
+  const currentUser = state.session && state.entities.users[state.session.userId];
   if (currentUser && currentUser.list_ids) {
     props.lists = currentUser.list_ids.map(id => state.entities.lists[id]);
   }

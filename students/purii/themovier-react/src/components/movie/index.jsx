@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import Loading from '../loading';
+import ListPanel from '../../containers/movie/list-panel';
 
 const styles = theme => ({
   istokText: {
@@ -14,7 +15,7 @@ const styles = theme => ({
   },
   paper: {
     height: 'calc(100vh - 40px)',
-    padding: 20,
+    padding: theme.spacing.unit * 5,
     borderRadius: 0,
     display: 'flex',
     flexDirection: 'column',
@@ -127,6 +128,8 @@ class Movie extends Component {
                 </Typography>
               </Grid>
             </Grid>
+
+            <ListPanel movieId={movie.id} />
           </div>
         </Grid>
       </Grid>

@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import Fab from '@material-ui/core/Fab';
-import Nav from './nav';
-import Home from './home';
+import Nav from '../containers/nav';
+import Home from '../containers/home';
 import List from '../containers/list';
 import Movie from '../containers/movie/index';
 import User from '../containers/user/index';
@@ -24,48 +24,34 @@ const styles = theme => ({
   main: {
     width: '100%',
     height: '100vh',
-  }
+  },
 });
 
-class App extends Component {
-  state = {
-    isNavOpen: false,
-  };
+function App({ onToggleNav, classes }) {
+  return (
+    <Router>
+      <div className={classes.root}>
+        <Fab
+          color="primary"
+          aria-label="Add"
+          className={classes.fab}
+          onClick={onToggleNav}
+        >
+          <MenuIcon />
+        </Fab>
 
-  toggleNav = () => {
-    const { isNavOpen } = this.state;
-    this.setState({ isNavOpen: !isNavOpen });
-  };
+        <Nav onClose={() => onToggleNav(false)} />
 
-  render() {
-    const { classes } = this.props;
-    const { isNavOpen } = this.state;
-
-    return (
-      <Router>
-        <div className={classes.root}>
-          <Fab
-            color="primary"
-            aria-label="Add"
-            className={classes.fab}
-            onClick={this.toggleNav}
-          >
-            <MenuIcon />
-          </Fab>
-
-          <Nav isOpen={isNavOpen} onClose={this.toggleNav} />
-          
-          <main className={classes.main}>
-            <Route exact path="/" component={Home} />
-            <Route path="/lists/:listId" component={List} />
-            <Route path="/movies/:movieId" component={Movie} />
-            <Route path="/users/:userId" component={User} />
-            <Route path="/admin" component={Admin} />
-          </main>
-        </div>
-      </Router>
-    );
-  }
+        <main className={classes.main}>
+          <Route exact path="/" component={Home} />
+          <Route path="/lists/:listId" component={List} />
+          <Route path="/movies/:movieId" component={Movie} />
+          <Route path="/users/:userId" component={User} />
+          <Route exact path="/admin" component={Admin} />
+        </main>
+      </div>
+    </Router>
+  );
 }
 
 export default withStyles(styles)(App);

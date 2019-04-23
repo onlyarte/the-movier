@@ -7,7 +7,7 @@ import BluePalette from '@material-ui/core/colors/blue';
 import PinkPalette from '@material-ui/core/colors/pink';
 import RedPalette from '@material-ui/core/colors/red';
 import BlueGrey from '@material-ui/core/colors/blueGrey';
-import App from './components/app';
+import App from './containers/app';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './config-store';
 import './index.css';
