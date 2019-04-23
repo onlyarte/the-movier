@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Fab from '@material-ui/core/Fab';
 import Nav from '../containers/nav';
 import Home from '../containers/home';
+import Search from '../containers/search';
 import List from '../containers/list';
 import Movie from '../containers/movie/index';
 import User from '../containers/user/index';
@@ -44,6 +45,7 @@ function App({ onToggleNav, classes }) {
 
         <main className={classes.main}>
           <Route exact path="/" component={Home} />
+          <Route path="/search" component={Search} />
           <Route path="/lists/:listId" component={List} />
           <Route path="/movies/:movieId" component={Movie} />
           <Route path="/users/:userId" component={User} />

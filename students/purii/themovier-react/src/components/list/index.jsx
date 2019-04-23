@@ -14,8 +14,8 @@ const styles = theme => ({
       fontFamily: 'Istok Web, sans-serif',
     },
   },
-  paper: {
-    height: 'calc(100vh - 40px)',
+  content: {
+    height: `calc(100vh - ${theme.spacing.unit * 5 * 2}px)`,
     padding: theme.spacing.unit * 5,
     borderRadius: 0,
     display: 'flex',
@@ -44,6 +44,7 @@ const styles = theme => ({
     position: 'absolute',
     top: 0,
     left: 0,
+    height: '100vh',
     width: '100%',
     background: 'none',
   },
@@ -112,7 +113,7 @@ class List extends Component {
               />
             </div>
             <div className={classes.frontLayer}>
-              <div className={classNames(classes.paper, classes.leftPaper)}>
+              <div className={classNames(classes.content, classes.leftPaper)}>
                 <Typography variant="h6">
                   {list.title.toUpperCase()}
                 </Typography>
@@ -148,7 +149,7 @@ class List extends Component {
         </Grid>
         <Grid item xs={12} md={6} lg={7}>
           {activeMovie && (
-            <div className={classNames(classes.paper, classes.rightPaper)}>
+            <div className={classNames(classes.content, classes.rightPaper)}>
               <Typography variant="h4" gutterBottom>
                 {activeMovie.title}
               </Typography>

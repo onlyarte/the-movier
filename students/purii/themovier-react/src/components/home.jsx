@@ -66,10 +66,7 @@ const styles = theme => ({
 function Home({ popularMovies, popularUsers, isLoggedIn, classes }) {
   return (
     <Grid container spacing={0}>
-      <Grid item xs={12} md={6} lg={5}>
-        
-      </Grid>
-      <Grid item xs={12} md={6} lg={7}>
+      <Grid item xs={12} md={12} lg={12}>
         <div className={classes.paper}>
           <Typography variant="h3" className={classes.mergimText}>
             THE MOVIER

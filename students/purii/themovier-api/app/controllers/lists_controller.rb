@@ -3,7 +3,11 @@ class ListsController < ApplicationController
 
   # GET /lists
   def index
-    @lists = List.all
+    @lists = if params[:q]
+      List.where('title LIKE ?', "%#{params[:q]}%")
+    else
+      List.all
+    end
     json_response(@lists)
   end
 
@@ -40,7 +44,7 @@ class ListsController < ApplicationController
 
   def list_params
     # whitelist params
-    params.permit(:title, :author_id)
+    params.permit(:title, :author_id, :q)
   end
 
   def set_list

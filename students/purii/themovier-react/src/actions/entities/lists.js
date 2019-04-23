@@ -33,6 +33,15 @@ export const fetchList = list_id => dispatch => {
     });
 };
 
+export const fetchLists = query => dispatch => {
+  return axios
+    .get(`http://localhost:3000/lists?q=${query}`)
+    .then(({ data }) => {
+      dispatch(receiveLists(data));
+      return data;
+    });
+};
+
 export const fetchListMovies = list_id => dispatch => {
   return axios
     .get(`http://localhost:3000/lists/${list_id}/movies`)

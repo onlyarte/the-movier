@@ -3,7 +3,11 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    @movies = Movie.all
+    @movies = if params[:q]
+      Movie.where('title LIKE ?', "%#{params[:q]}%")
+    else
+      Movie.all
+    end
     json_response(@movies)
   end
 
@@ -45,7 +49,8 @@ class MoviesController < ApplicationController
       :plot,
       :country,
       :poster,
-      :imdb_rating
+      :imdb_rating,
+      :q
     )
   end
 

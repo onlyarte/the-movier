@@ -14,7 +14,7 @@ const styles = theme => ({
     },
   },
   paper: {
-    height: 'calc(100vh - 40px)',
+    height: `calc(100vh - ${theme.spacing.unit * 5 * 2}px)`,
     padding: theme.spacing.unit * 5,
     borderRadius: 0,
     display: 'flex',

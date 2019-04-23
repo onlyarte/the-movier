@@ -27,7 +27,7 @@ export const fetchMovie = movie_id => dispatch => {
 
 export const fetchMovies = query => dispatch => {
   return axios
-    .get(`http://localhost:3000/movies?query=${encodeURIComponent(query)}`)
+    .get(`http://localhost:3000/movies?q=${query}`)
     .then(({ data }) => {
       dispatch(receiveMovies(data));
       return data;

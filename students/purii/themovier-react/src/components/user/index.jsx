@@ -16,7 +16,7 @@ const styles = theme => ({
     },
   },
   paper: {
-    height: 'calc(100vh - 40px)',
+    height: `calc(100vh - ${theme.spacing.unit * 5 * 2}px)`,
     padding: theme.spacing.unit * 5,
     borderRadius: 0,
     display: 'flex',
@@ -141,7 +141,7 @@ class User extends Component {
               </Typography>
 
               <div className={classes.slider}>
-                {user.lists &&
+                {user.lists && user.lists.length > 0 ? (
                   user.lists.map(list => (
                     <Link to={`/lists/${list.id}`} key={list.id}>
                       <div className={classes.sliderItem}>
@@ -159,7 +159,12 @@ class User extends Component {
                         </div>
                       </div>
                     </Link>
-                  ))}
+                  ))
+                ) : (
+                  <Typography variant="subtitle1" gutterBottom>
+                    Not found
+                  </Typography>
+                )}
               </div>
             </div>
           </div>
